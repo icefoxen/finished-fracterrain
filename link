@@ -1,0 +1,26 @@
+#!/bin/sh
+
+FILES="fracterrain.cmo"
+
+LIBS="str.cma unix.cma nums.cma bigarray.cma sdl.cma sdlttf.cma 
+      sdlmixer.cma"
+
+
+OPTFILES="fracterrain.cmx"
+
+OPTLIBS="str.cmxa unix.cmxa nums.cmxa bigarray.cmxa sdl.cmxa sdlttf.cmxa 
+      sdlmixer.cmxa"
+
+
+OCAMLC=ocamlc.opt
+OCAMLCP=ocamlcp
+OCAMLOPT=ocamlopt
+
+OCAMLSDLLIB=`ocamlfind query sdl`
+
+OUTNAME=fracterrain
+
+
+#$OCAMLC -o $OUTNAME -g -I $OCAMLSDLLIB $LIBS $FILES
+$OCAMLOPT -o $OUTNAME.opt -I $OCAMLSDLLIB $OPTLIBS $OPTFILES
+
